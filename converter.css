@@ -1,7 +1,7 @@
 html {
   scroll-behavior: smooth;
 }
-*{
+* {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
@@ -13,57 +13,156 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-.container{
-  background: linear-gradient(rgba(0,0,0,0.5),#1f0603);
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    background-color: #000;
-}
-.upload-section {
-  text-align: center;
-  color: #fff;
-  padding-top: 180px;
-}
-.upload-section input[type="file"] {
-  padding: 10px;
-  font-size: 16px;
-}
-.code-container {
-  display: flex;
-  justify-content: space-evenly;
-}
-.code-panel {
-  width: 48%;
-  border: 1px solid #ccc;
-  padding: 20px;
-  background-color: #f9f9f9;
+#container {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), #1f0603);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-color: #000;
   position: relative;
 }
-.code-panel h3 {
+
+/* For centering the drop-container */
+.drop-container {
+  position: absolute; /* Position relative to the viewport */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Move back half of the container's width and height */
+
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply blur to the background */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+
+  padding: 1.5rem;
+  width: 80%; /* Responsive width */
+  max-width: 450px; /* Set a max width */
+  border-radius: 20px;
+  box-shadow: 0 0 40px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.drop {
+  border-radius: 10px;
+  border: 3px dashed #fff;
+  display: grid;
+  width: 100%;
+  place-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+}
+.active {
+  border: 3px solid #4b4b4b;
+  background: #edccff;
+}
+.drop .icon {
+  font-size: 60px;
+  color: #fff;
+}
+.drop .text {
   text-align: center;
+  font-weight: 500;
+  color: #fff;
+  margin-top: 1rem;
 }
-.code-panel pre {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 10px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  max-height: 400px;
-  overflow-y: auto;
+.progress {
+  background: #a916f9;
+  width: 0%;
+  height: 20px;
+  display: none;
+  border-radius: 10px;
+  transition: all 0.2s;
 }
-.copy-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px 10px;
-  font-size: 14px;
+/* Browse Files button hover effect */
+.drop label {
+  width: 150px; /* You can adjust the width if needed */
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  margin: 0 10px;
+  padding: 12px 0;
+  color: #fff;
+  border: 0.5px solid #fff;
+  position: relative;
+  z-index: 1;
   cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 3px;
+  transition: color 0.5s;
+  overflow: hidden;
 }
-.copy-btn:hover {
-  background-color: #0056b3;
+
+.drop label span {
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: -1;
+  transition: 0.5s;
 }
+
+.drop label:hover span {
+  width: 100%;
+}
+
+.drop label:hover {
+  color: black;
+}
+
+.file-input {
+  display: none;
+}
+.line {
+  width: 80px;
+  height: 1px;
+  background: #fff;
+}
+.or-con {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+}
+.or {
+  margin: 0 1rem;
+  font-weight: 500;
+  color: #fff;
+}
+#image-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+  .drop-container {
+    width: 90%; /* Adjust width for smaller screens */
+    max-width: none; /* Remove max-width restriction */
+  }
+
+  .drop .icon {
+    font-size: 50px; /* Adjust icon size */
+  }
+}
+
+@media (max-width: 480px) {
+  .drop-container {
+    width: 95%; /* Full width on very small screens */
+    padding: 1rem; /* Adjust padding */
+  }
+
+  .drop .icon {
+    font-size: 40px; /* Further adjust icon size */
+  }
+
+  .drop label {
+    padding: 0.5rem 1.5rem; /* Adjust label padding */
+  }
+}
+
