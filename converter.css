@@ -165,4 +165,138 @@ body {
     padding: 0.5rem 1.5rem; /* Adjust label padding */
   }
 }
+/* Submit Button Styling */
+.submit-btn-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.submit-btn {
+  background-color: #6a1b9a; /* New color to match the theme */
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Text inside button */
+.btn-text {
+  transition: opacity 0.3s;
+}
+
+/* Spinner (loading animation) */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 3px solid transparent;
+  border-top: 3px solid #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s;
+}
+
+/* Hover Effect */
+.submit-btn:hover {
+  background-color: #8e24aa; /* A lighter shade of the button color */
+  transform: scale(1.05);
+}
+
+/* Active State */
+.submit-btn:active {
+  background-color: #4a0072;
+  transform: scale(0.98);
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading State - Hide text, show spinner */
+.loading .btn-text {
+  opacity: 0;
+}
+
+.loading .spinner {
+  opacity: 1;
+}
+
+/* Success State - Change background to green */
+.success {
+  background-color: #388e3c; /* Success green */
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .submit-btn {
+    width: 80%;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .submit-btn {
+    width: 100%;
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+/* Adjusting preview inside the drop container */
+.image-preview-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.file-info .thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.file-info .file-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-info .file-details p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.file-info .file-details p strong {
+  font-weight: bold;
+}
 

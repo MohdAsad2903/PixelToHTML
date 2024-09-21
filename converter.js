@@ -2,13 +2,13 @@ const drop = document.querySelector(".drop");
 const input = document.querySelector(".file-input");
 const text = document.querySelector(".text");
 const progress = document.querySelector(".progress");
-const imagePreview = document.getElementById("image-preview");
+const imagePreviewContainer = document.querySelector(".image-preview-container"); // Now inside the drop container
 
 let files = [];
 
 // Handle input change (file selection via button)
 input.addEventListener("change", () => {
-  files = input.files;
+  files = [...files, ...input.files]; // Append new files
   handleFileUpload(files);
 });
 
@@ -27,7 +27,7 @@ drop.addEventListener("dragleave", (e) => {
 
 drop.addEventListener("drop", (e) => {
   e.preventDefault();
-  files = e.dataTransfer.files;
+  files = [...files, ...e.dataTransfer.files]; // Append new files on drop
   handleFileUpload(files);
   drop.classList.remove("active");
   text.innerHTML = "Drag and drop your layout here.";
@@ -35,16 +35,18 @@ drop.addEventListener("drop", (e) => {
 
 // Function to handle file upload (image preview and progress)
 function handleFileUpload(files) {
-  // Only allow image files
   const validImageTypes = ["image/jpeg", "image/png", "image/gif"];
-  const file = files[0];
 
-  if (validImageTypes.includes(file.type)) {
-    // Hide the drop area and start showing progress
-    drop.style.display = "none";
-    upload(file);
-  } else {
-    alert("Please upload a valid image file.");
+  // Clear previous preview before showing new previews
+  imagePreviewContainer.innerHTML = '';
+
+  for (let file of files) {
+    if (validImageTypes.includes(file.type)) {
+      // Hide the drop area and start showing progress
+      upload(file);
+    } else {
+      alert("Please upload a valid image file.");
+    }
   }
 }
 
@@ -61,21 +63,58 @@ function upload(file) {
     if (intervalCount >= 5) {
       clearInterval(interval);
       progress.style.display = 'none';
-      displayImage(file); // Show the image preview
+      displayFileInfo(file); // Show file info and small preview inside the drop container
     }
   }, 100);
 }
 
-// Function to display image preview
-function displayImage(file) {
+// Function to display file info with a small preview
+function displayFileInfo(file) {
   const reader = new FileReader();
 
   reader.onload = function (e) {
-    imagePreview.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image" style="max-width: 100%; height: auto; border-radius: 10px; margin-top: 20px;" />`;
+    const fileInfoHTML = `
+      <div class="file-info">
+        <img src="${e.target.result}" alt="Uploaded Image" class="thumbnail" />
+        <div class="file-details">
+          <p><strong>File Name:</strong> ${file.name}</p>
+          <p><strong>File Type:</strong> ${file.type}</p>
+        </div>
+      </div>
+    `;
+    // Append each file preview inside the drop container
+    imagePreviewContainer.innerHTML += fileInfoHTML;
   };
 
   reader.readAsDataURL(file);
 }
+
+
+// Get the submit button and spinner
+const submitBtn = document.getElementById("submit-btn");
+const spinner = document.getElementById("spinner");
+const btnText = document.querySelector(".btn-text");
+
+// Add click event listener to the submit button
+submitBtn.addEventListener("click", function () {
+  if (!submitBtn.classList.contains("loading")) {
+    // Add loading state
+    submitBtn.classList.add("loading");
+
+    // Simulate an async action (like form submission)
+    setTimeout(() => {
+      // Remove loading state
+      submitBtn.classList.remove("loading");
+
+      // Add success state
+      submitBtn.classList.add("success");
+
+      // Change button text to indicate success
+      btnText.textContent = "Success!";
+    }, 3000); // 3 seconds delay for demo purposes
+  }
+});
+
 
 
 
