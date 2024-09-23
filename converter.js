@@ -168,23 +168,23 @@ submitBtn.addEventListener("click", function () {
 //     }
 // });
 
-//   // Function to copy code to clipboard
-// function copyToClipboard(elementId) {
-//     const codeElement = document.getElementById(elementId);
-//     const textToCopy = codeElement.textContent;
+  // Function to copy code to clipboard
+function copyToClipboard(elementId) {
+    const codeElement = document.getElementById(elementId);
+    const textToCopy = codeElement.textContent;
 
-//     // Create a temporary textarea to hold the code and copy to clipboard
-//     const tempTextArea = document.createElement('textarea');
-//     tempTextArea.value = textToCopy;
-//     document.body.appendChild(tempTextArea);
+    // Create a temporary textarea to hold the code and copy to clipboard
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = textToCopy;
+    document.body.appendChild(tempTextArea);
 
-//     // Select the content and copy
-//     tempTextArea.select();
-//     document.execCommand('copy');
+    // Select the content and copy
+    tempTextArea.select();
+    document.execCommand('copy');
 
-//     // Remove the temporary textarea
-//     document.body.removeChild(tempTextArea);
+    // Remove the temporary textarea
+    document.body.removeChild(tempTextArea);
 
-//     // Alert user that the content has been copied
-//     alert('Code copied to clipboard!');
-// }
+    // Alert user that the content has been copied
+    alert('Code copied to clipboard!');
+}
