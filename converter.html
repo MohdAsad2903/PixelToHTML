@@ -52,27 +52,30 @@
       <!-- Submit Button with Spinner -->
       <div class="submit-btn-container">
         <button class="submit-btn" id="submit-btn">
-        <span class="btn-text">Submit</span>
+        <span class="btn-text">Generate</span>
         <span class="spinner" id="spinner"></span>
         </button>
       </div>
     </div>
     <div id="image-preview-container"></div>
-    Code Display Section
+    <!-- Code Display Section -->
+    <!-- Code Display Section, initially hidden -->
     <div class="code-container">
-      <div class="code-panel">
+      <!-- HTML Code Panel -->
+      <div class="code-panel" id="html-panel">
         <h3>HTML Code</h3>
-        <button class="copy-btn" onclick="copyToClipboard('htmlCode')">Copy</button>
-        <pre id="htmlCode">&lt;!-- Your generated HTML code will appear here --&gt;</pre>
+        <button class="copy-btn" onclick="copyToClipboard('htmlCode')">Copy HTML</button>
+        <pre id="htmlCode">&lt;!-- Generated HTML code will appear here --&gt;</pre>
       </div>
-      <div class="code-panel">
+    
+      <!-- CSS Code Panel -->
+      <div class="code-panel" id="css-panel">
         <h3>CSS Code</h3>
-        <button class="copy-btn" onclick="copyToClipboard('cssCode')">Copy</button>
-        <pre id="cssCode">/* Your generated CSS code will appear here */</pre>
+        <button class="copy-btn" onclick="copyToClipboard('cssCode')">Copy CSS</button>
+        <pre id="cssCode">/* Generated CSS code will appear here */</pre>
       </div>
-    </div> 
-
-</section>
+    </div>
+  </section>
 
 
 <!-- for smaller screen -->

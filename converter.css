@@ -300,3 +300,46 @@ body {
   font-weight: bold;
 }
 
+.code-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.code-panel {
+  width: 45%;
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.code-panel h3 {
+  margin-top: 0;
+}
+
+.code-panel pre {
+  background-color: #282a36;
+  color: #f8f8f2;
+  padding: 15px;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+.copy-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  background-color: #45a049;
+}
+
+/* Hide the panels initially */
+#html-panel, #css-panel {
+  display: none;
+}
